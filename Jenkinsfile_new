@@ -19,7 +19,7 @@ pipeline {
                 // Use bat instead of sh and adjust volume mount for Windows PowerShell syntax
                 bat """
                 docker run --rm -v "%WORKSPACE%:/tests" ^ ${IMAGE_NAME} ^
-                /opt/apache-jmeter-5.5/bin/jmeter ^ -n -t NewScript.jmx -l results.jtl
+                /opt/apache-jmeter-5.5/bin/jmeter ^ -n -t PrometheusListener.jmx -l results.jtl
                 """
             }
         }
