@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'hari225/hello-world:v1.0'  // Your Docker image name
-        TEST_REPO = 'https://github.com/chanduyadav143/JMeter-Scripts.git'  // Your GitHub repo URL
+        TEST_REPO = 'https://github.com/Hari-svg/Jmeter_jenkins.git '  // Your GitHub repo URL
     }
 
     stages {
