@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout Tests') {
             steps {
                 // Clone your test scripts repository with credentials
-                git branch: 'main', credentialsId: "${params.gitCredentialsID}", url: "${TEST_REPO}"
+                git branch: 'main', credentialsId: "${params.hariGitId}", url: "${TEST_REPO}"
             }
         }
         
