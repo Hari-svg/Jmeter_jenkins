@@ -23,7 +23,7 @@ pipeline {
                         -v "%WORKSPACE%:/tests" ^
                         ${IMAGE_NAME} ^
                         /opt/apache-jmeter-5.5/bin/jmeter ^
-                        -n -t /tests/NewScript.jmx ^
+                        -n -t /tests/New5.jmx.jmx ^
                         -l /tests/results.jtl
                     """
                 }
