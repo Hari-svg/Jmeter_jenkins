@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'chanduyadav143/jmetertest:v1.0'  // Your Docker image name
-        TEST_REPO = 'https://github.com/chanduyadav143/JMeter-Scripts.git'  // Your GitHub repo URL
+        IMAGE_NAME = 'jmeterfile'  // Your Docker image name
+        TEST_REPO = 'https://github.com/Hari-svg/Jmeter_jenkins.git'  // Your GitHub repo URL
     }
 
     stages {
