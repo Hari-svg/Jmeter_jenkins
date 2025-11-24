@@ -15,13 +15,17 @@ pipeline {
         }
         
         stage('Run JMeter Tests') {
-            steps {
-                // Use bat instead of sh and adjust volume mount for Windows PowerShell syntax
-                bat """
-                docker run --rm -v "%WORKSPACE%:/tests" ^ ${IMAGE_NAME} ^
-                /opt/apache-jmeter-5.5/bin/jmeter ^ -n -t PrometheusListener.jmx -l results.jtl
-                """
-            }
+           script {
+                    // Run Docker container with volume mapping to workspace
+                    bat """
+                    docker run --rm ^
+                        -v "%WORKSPACE%:/tests" ^
+                        ${IMAGE_NAME} ^
+                        /opt/apache-jmeter-5.5/bin/jmeter ^
+                        -n -t /tests/NewScript.jmx ^
+                        -l /tests/results.jtl
+                    """
+                }
         }
 
         stage('Archive Results') {
