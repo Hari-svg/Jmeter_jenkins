@@ -15,6 +15,7 @@ pipeline {
         }
         
         stage('Run JMeter Tests') {
+          steps{
            script {
                     // Run Docker container with volume mapping to workspace
                     bat """
@@ -27,7 +28,7 @@ pipeline {
                     """
                 }
         }
-
+}
         stage('Archive Results') {
             steps {
                 archiveArtifacts artifacts: 'results.jtl', fingerprint: true
