@@ -18,15 +18,15 @@ pipeline {
             steps {
                 // Use bat instead of sh and adjust volume mount for Windows PowerShell syntax
                 bat """
-                docker run --rm -v %cd%\\/tests -w /tests ${IMAGE_NAME} ^
-                -n -t NewScript.jmx -l results.jtl
+                docker run --rm -v "%WORKSPACE%:/tests" ^ ${IMAGE_NAME} ^
+                /opt/apache-jmeter-5.5/bin/jmeter ^ -n -t NewScript.jmx -l results.jtl
                 """
             }
         }
 
         stage('Archive Results') {
             steps {
-                archiveArtifacts artifacts: 'JMX_Files/results.jtl, report/**', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'results.jtl', fingerprint: true
             }
         }
     }
