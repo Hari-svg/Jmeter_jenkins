@@ -10,13 +10,13 @@ pipeline {
 
         stage('Checkout Tests') {
             steps {
-                git branch: 'main',
+               git branch: 'main',
                     credentialsId: 'GitHub-PAT',
-                    url: TEST_REPO
+                    url: TEST_REPO	
             }
         }
 
-  stage('Run JMeter Tests') {
+        stage('Run JMeter Tests') {
             steps {
                 script {
                     // Run Docker container with volume mapping to workspace
@@ -29,12 +29,12 @@ pipeline {
                         -l /tests/results.jtl ^
                         -e -o /tests/report
                     """
-                    """
+                 
                 }
             }
         }
 
- stage('Archive Results') {
+        stage('Archive Results') {
             steps {
                 archiveArtifacts artifacts: 'results.jtl, report/**', allowEmptyArchive: true
             }
@@ -75,10 +75,6 @@ pipeline {
         }
     }
 }
-
-
-
-
 
 
 
