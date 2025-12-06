@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'jmeterfile'  // Your Docker image
+        IMAGE_NAME = 'jmeter_5.6.3'  // Your Docker image
         TEST_REPO  = 'https://github.com/Hari-svg/Jmeter_jenkins.git'  // Git repo with .jmx files
     }
 
@@ -75,6 +75,7 @@ pipeline {
         }
     }
 }
+
 
 
 
