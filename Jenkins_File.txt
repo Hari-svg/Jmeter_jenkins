@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'jmeterfile'  // Your Docker image
-        TEST_REPO  = 'https://github.com/Masthanshaik1/Master-for-PT.git'  // Git repo with .jmx files
+        TEST_REPO  = 'https://github.com/Hari-svg/Master-for-PT.git'  // Git repo with .jmx files
     }
 
     stages {
@@ -25,7 +25,7 @@ pipeline {
                         -v "%WORKSPACE%:/tests" ^
                         ${IMAGE_NAME} ^
                         /opt/apache-jmeter-5.6.3/bin/jmeter ^
-                        -n -t /tests/JMX/AB_SPRINT_4_50Urs_load.jmx ^
+                        -n -t /tests/NewScript.jmx.jmx ^
                         -l /tests/results.jtl
                     """
                     """
@@ -35,7 +35,7 @@ pipeline {
 
  stage('Archive Results') {
             steps {
-                archiveArtifacts artifacts: 'LoadTest/results.jtl, report/**', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'results.jtl, report/**', allowEmptyArchive: true
             }
         }
 
@@ -74,6 +74,7 @@ pipeline {
         }
     }
 }
+
 
 
 
