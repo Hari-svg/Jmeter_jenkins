@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'jmeterfile'  // Your Docker image
-        TEST_REPO  = 'https://github.com/Hari-svg/Master-for-PT.git'  // Git repo with .jmx files
+        TEST_REPO  = 'https://github.com/Hari-svg/Jmeter_jenkins.git'  // Git repo with .jmx files
     }
 
     stages {
@@ -49,31 +49,32 @@ pipeline {
                     )
                 ]) {
                     bat """
-                    git config --global user.email "masthan.shaik@spectravisionit.com"
-                    git config --global user.name "Masthanshaik1"
+                    git config --global user.email "chowdamharibabu.224@gmail.com"
+                    git config --global user.name "Hari-svg"
 
                     rem Pull latest changes first
-                    git pull https://%GIT_USER%}%GIT_PASS%@github.com/Masthanshaik1/Master-for-PT.git main
+                    git pull https://%GIT_USER%}%GIT_PASS%@github.com/Hari-svg/Jmeter_jenkins.gitt main
 
                     rem Create results folder if not exists
                     if not exist results mkdir results
 
                     rem Append build number to results file and folder
                     set BUILD_NUM=%BUILD_NUMBER%
-                    copy /Y LoadTest\\results.jtl results\\results_%BUILD_NUM%.jtl
+                    copy /Y results.jtl results\\results_%BUILD_NUM%.jtl
                     xcopy /E /I /Y report results\\report_%BUILD_NUM%
 
                     git add results\\
 
                     git commit -m "Automated: Add latest JMeter results for build #%BUILD_NUM%" || echo Nothing to commit
 
-                    git push https://%GIT_USER%:%GIT_PASS%@github.com/Masthanshaik1/Master-for-PT.git main
+                    git push https://%GIT_USER%:%GIT_PASS%@github.com/Hari-svg/Jmeter_jenkins.git main
                     """
                 }
             }
         }
     }
 }
+
 
 
 
