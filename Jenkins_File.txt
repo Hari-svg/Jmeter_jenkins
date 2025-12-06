@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'jmeter-with-plugins'  // Your Docker image
+        IMAGE_NAME = 'jmeterfile'  // Your Docker image
         TEST_REPO  = 'https://github.com/Masthanshaik1/Master-for-PT.git'  // Git repo with .jmx files
     }
 
@@ -74,6 +74,7 @@ pipeline {
         }
     }
 }
+
 
 
 
