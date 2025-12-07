@@ -26,7 +26,7 @@ pipeline {
                         ${IMAGE_NAME} ^
                         /opt/apache-jmeter-5.6.3/bin/jmeter ^
                         -n -t /tests/NewScript.jmx ^
-                        -l /tests/results.jtl ^
+                        -l /tests/results_%date%.jtl ^
                         -e -o /tests/report
                     """
                  
@@ -36,7 +36,7 @@ pipeline {
 
         stage('Archive Results') {
             steps {
-                archiveArtifacts artifacts: 'results.jtl, report/**', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'results_%date%.jtl, report/**', allowEmptyArchive: true
             }
         }
 
@@ -61,7 +61,7 @@ pipeline {
 
                     rem Append build number to results file and folder
                     set BUILD_NUM=%BUILD_NUMBER%
-                    copy /Y results.jtl results\\results_%BUILD_NUM%.jtl
+                    copy /Y results_%date%.jtl results\\results_%BUILD_NUM%.jtl
                     xcopy /E /I /Y report results\\report_%BUILD_NUM%
 
                     git add results\\
@@ -75,6 +75,7 @@ pipeline {
         }
     }
 }
+
 
 
 
