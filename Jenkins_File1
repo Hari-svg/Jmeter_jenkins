@@ -23,6 +23,7 @@ pipeline {
                     bat """
                     docker run --rm ^
                         -v "%WORKSPACE%:/tests" ^
+                        -w /tests ^
                         ${IMAGE_NAME} ^
                         /opt/apache-jmeter-5.6.3/bin/jmeter ^
                         -n -t /tests/JmeterNewScript.jmx ^
@@ -75,6 +76,7 @@ pipeline {
         }
     }
 }
+
 
 
 
